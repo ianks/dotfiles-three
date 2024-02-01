@@ -13,7 +13,6 @@
   programs.zsh.enable = true;
   programs.ripgrep.enable = true;
   programs.bat.enable = true;
-  programs.exa.enable = true;
   programs.gh.enable = true;
   programs.neovim.enable = true;
   programs.htop.enable = true;
