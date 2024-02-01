@@ -7,13 +7,13 @@
   };
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      getVar = varName: nixpkgs.lib.removeSuffix "\n" (builtins.readFile ./.flake-var-${varName});
+      getVar = varName: nixpkgs.lib.removeSuffix "\n" (builtins.readFile /tmp/.flake-var-${varName});
     in
     {
       # Home Manager configurations
       homeConfigurations = {
         "dev" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          pkgs = nixpkgs.legacyPackages.${getVar "system"};
           extraSpecialArgs = { inherit inputs; };
           modules = [
             ./home.nix
