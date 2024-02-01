@@ -1,4 +1,10 @@
-{ config, pkgs, misc, ... }: {
+{ config, pkgs, misc, ... }:
+let
+  getVar = varName: pkgs.lib.removeSuffix "\n" (builtins.readFile /tmp/.flake-var-${varName});
+in
+{
+  home.username = getVar "user";
+  home.homeDirectory = getVar "home";
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -6,7 +12,7 @@
       allowUnfreePredicate = (_: true);
     };
   };
-  home.stateVersion = "24.05"; # https://nixos.org/manual/nixos/unstable/release-notes#sec-release-24.05
+  home.stateVersion = "22.11"; # https://nixos.org/manual/nixos/unstable/release-notes#sec-release-24.05
   home.packages = [
     pkgs.helix
     pkgs.git
