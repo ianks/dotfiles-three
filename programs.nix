@@ -16,6 +16,8 @@
   programs.bat.enable = true;
   programs.exa.enable = true;
   programs.gh.enable = true;
+  programs.neovim.enable = true;
+  programs.htop.enable = true;
   programs.gh.settings = {
     enableNotifications = false;
   };
