@@ -24,6 +24,15 @@ in
     pkgs.vscode
     pkgs.just
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    pkgs.gh
+    pkgs.direnv
+    pkgs.ripgrep
+    pkgs.bat
+    pkgs.rustup
+    pkgs.ruby
+    pkgs.llvm
+    pkgs.clang
+    pkgs.lldb
   ];
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;

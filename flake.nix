@@ -22,6 +22,7 @@
             ./user.nix
             ./aliases.nix
             ./programs.nix
+            ./vscode.nix
           ];
         };
       };

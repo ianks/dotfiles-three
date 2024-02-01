@@ -26,4 +26,10 @@ elif [ "$(uname)" == "Linux" ]; then
 fi
 echo "System detected: $(cat /tmp/.flake-var-system)"
 echo "Switching to the flake..."
-nix run --impure home-manager/master -- -b bak switch --impure --flake .#dev
+
+if [ "${DEBUG:-0}" = "1" ]; then
+  set -x
+  nix run --show-trace --impure home-manager/master -b bak -- switch --b bak -show-trace --impure --flake .#dev
+else
+  nix run --impure home-manager/master -- switch -b bak --impure --flake .#dev
+fi

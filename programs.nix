@@ -9,7 +9,6 @@
     python.disabled = true;
     docker_context.disabled = true;
   };
-  programs.gpg.enable = true;
   programs.zsh.enable = true;
   programs.ripgrep.enable = true;
   programs.bat.enable = true;
