@@ -23,7 +23,7 @@
     userName = "Ian Ker-Seymer";
     userEmail = "hello@ianks.com";
     extraConfig = {
-      feature.manyFiles = true;
+      # feature.manyFiles = true;
       init.defaultBranch = "main";
       commit.gpgsign = true;
       gpg.format = "ssh";
