@@ -11,6 +11,14 @@
   };
   programs.gpg.enable = true;
   programs.zsh.enable = true;
+  programs.ripgrep.enable = true;
+  programs.fd.enable = true;
+  programs.bat.enable = true;
+  programs.exa.enable = true;
+  programs.gh.enable = true;
+  programs.gh.settings = {
+    enableNotifications = false;
+  };
   programs.git = {
     enable = true;
     aliases = {
