@@ -55,23 +55,23 @@
       update.mode = "none";
       terminal.integrated.shell.linux = "${pkgs.zsh}/bin/zsh";
 
-      "editor.fontFamily" =
+      editor.fontFamily =
         "FiraCode, 'FiraCode NFM', 'JetbrainsMono Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'";
-      "editor.cursorStyle" = "line";
-      "editor.lineNumbers" = "on";
-      "editor.wordWrap" = "off";
-      "editor.fontLigatures" = true;
-      "editor.inlineSuggest.enabled" = true;
-      "editor.tabSize" = 2;
-      "editor.insertSpaces" = true;
+      editor.cursorStyle = "line";
+      editor.lineNumbers = "on";
+      editor.wordWrap = "off";
+      editor.fontLigatures = true;
+      editor.inlineSuggest.enabled = true;
+      editor.tabSize = 2;
+      editor.insertSpaces = true;
 
       # make it faster
-      "editor.minimap.enabled" = false;
-      "search.searchOnType" = false;
-      "breadcrumbs.enabled" = true;
-      "editor.wordSeparators" = ''/\()"':;.;<>~!@#$%^&*|+=[]{}`?-'';
-      "terminal.integrated.tabs.enabled" = true;
-      "editor.inlayHints.enabled" = "off";
+      editor.minimap.enabled = false;
+      search.searchOnType = false;
+      breadcrumbs.enabled = true;
+      editor.wordSeparators = ''/\()"':;.;<>~!@#$%^&*|+=[]{}`?-'';
+      terminal.integrated.tabs.enabled = true;
+      editor.inlayHints.enabled = "off";
 
       workbench = {
         colorTheme = "Catppuccin Mocha";
@@ -79,24 +79,24 @@
       };
 
       "[json]" = {
-        "editor.defaultFormatter" = "vscode.json-language-features";
-        "editor.tabSize" = 2;
+        editor.defaultFormatter = "vscode.json-language-features";
+        editor.tabSize = 2;
       };
       "[ruby]" = {
-        "editor.tabSize" = 2;
-        "editor.defaultFormatter" = "Shopify.ruby-lsp";
-        "editor.formatOnSave" = true;
-        "editor.insertSpaces" = true;
-        "editor.semanticHighlighting.enabled" = true;
+        editor.tabSize = 2;
+        editor.defaultFormatter = "Shopify.ruby-lsp";
+        editor.formatOnSave = true;
+        editor.insertSpaces = true;
+        editor.semanticHighlighting.enabled = true;
       };
       "[rust]" = {
-        "editor.defaultFormatter" = "rust-lang.rust-analyzer";
-        "editor.semanticHighlighting.enabled" = true;
-        "editor.formatOnSave" = true;
+        editor.defaultFormatter = "rust-lang.rust-analyzer";
+        editor.semanticHighlighting.enabled = true;
+        editor.formatOnSave = true;
       };
       "[nix]" = {
-        "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
-        "editor.formatOnSave" = true;
+        editor.defaultFormatter = "brettm12345.nixfmt-vscode";
+        editor.formatOnSave = true;
       };
 
       vim = {
@@ -138,8 +138,8 @@
       # rust-client.rustupPath = "${pkgs.rustup}/bin/rustup";
 
       rust-analyzer.check.command = "clippy";
-      "diffEditor.ignoreTrimWhitespace" = false;
-      "files.trimTrailingWhitespace" = true;
+      diffEditor.ignoreTrimWhitespace = false;
+      files.trimTrailingWhitespace = true;
       files.exclude = {
         "**/.git" = true;
         "**/.svn" = true;
