@@ -7,10 +7,12 @@
   };
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      getVar = varName: nixpkgs.lib.removeSuffix "\n" (builtins.readFile /tmp/.flake-var-${varName});
-    in
-    {
-      # Home Manager configurations
+      getVar = varName:
+        nixpkgs.lib.removeSuffix "\n"
+        (builtins.readFile /tmp/.flake-var-${varName});
+    in {
+      home-manger.backupFileExtension = "nix-bak";
+
       homeConfigurations = {
         "dev" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${getVar "system"};
@@ -28,5 +30,3 @@
       };
     };
 }
-
-

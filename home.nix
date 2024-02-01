@@ -33,6 +33,7 @@ in
     pkgs.llvm
     pkgs.clang
     pkgs.lldb
+    pkgs.nixfmt
   ];
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;

@@ -2,6 +2,13 @@
 
 set -eou pipefail
 
+args=("--impure")
+
+if [ "${DEBUG:-0}" = "1" ]; then
+  set -x
+  args+=("--show-trace")
+fi
+
 dir=$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 echo "Switching to the directory $dir..."
 cd -P "$dir"
@@ -24,12 +31,26 @@ elif [ "$(uname)" == "Linux" ]; then
     exit 1
   fi
 fi
-echo "System detected: $(cat /tmp/.flake-var-system)"
-echo "Switching to the flake..."
 
-if [ "${DEBUG:-0}" = "1" ]; then
-  set -x
-  nix run --show-trace --impure home-manager/master -b bak -- switch --b bak -show-trace --impure --flake .#dev
-else
-  nix run --impure home-manager/master -- switch -b bak --impure --flake .#dev
+echo "System detected: $(cat /tmp/.flake-var-system)"
+
+if [ -f "$HOME/Library/Application Support/Code/User/settings.json" ]; then
+  if [ ! -f "$HOME/Library/Application Support/Code/User/settings.json.bak" ]; then
+    echo "Backing up VSCode settings..."
+    mv "$HOME/Library/Application Support/Code/User/settings.json" "$HOME/Library/Application Support/Code/User/settings.json.bak"
+  fi
 fi
+
+if [ -f "$HOME/Library/Application Support/Code/User/keybindings.json" ]; then
+  if [ ! -f "$HOME/Library/Application Support/Code/User/keybindings.json.bak" ]; then
+    echo "Backing up VSCode keybindings..."
+    mv "$HOME/Library/Application Support/Code/User/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json.bak"
+  fi
+fi
+
+echo "Switching to the flake..."
+nix run --impure home-manager/master -- switch "${args[@]}" --flake .#dev
+
+rm -f /tmp/.flake-var-home
+rm -f /tmp/.flake-var-user
+rm -f /tmp/.flake-var-system
