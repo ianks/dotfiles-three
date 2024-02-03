@@ -29,5 +29,5 @@ jobs:
           imageName: ghcr.io/ianks/devcontainer
           cacheFrom: ghcr.io/ianks/devcontainer
           push: filter
-          refFilterForPush: "refs/heads/main"
-          platform: "linux/amd64,linux/arm64"
+          refFilterForPush: refs/heads/main
+          platform: linux/amd64
