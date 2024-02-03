@@ -1,4 +1,20 @@
-{ pkgs, misc, ... }: {
+{ pkgs, misc, ... }:
+let
+  catppuccinIterm2 = builtins.fetchGit {
+    url = "https://github.com/catppuccin/iterm";
+    ref = "main";
+    rev = "c51f1815f49e43a26b335dcc70ddd667a87671a6";
+  };
+  astroNvimConf = builtins.fetchGit {
+    url = "https://github.com/AstroNvim/AstroNvim";
+    ref = "refs/tags/v3.42.2";
+  };
+  neovimConfRepo = builtins.fetchGit {
+    url = "https://github.com/ianks/astronvim_config.git";
+    ref = "main";
+    rev = "2eaeab27ca3eed8579a265b23802fd50a072f130";
+  };
+in {
   programs.direnv.enable = true;
   programs.starship.enable = true;
   programs.dircolors.enable = true;
@@ -13,18 +29,35 @@
   programs.ripgrep.enable = true;
   programs.bat.enable = true;
   programs.gh.enable = true;
-  programs.neovim.enable = true;
-  programs.htop.enable = true;
-  programs.gh.settings = {
-    enableNotifications = false;
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
   };
+  home.file.".config/nvim" = {
+    source = astroNvimConf;
+    recursive = true;
+  };
+  # environment.variables.EDITOR = "nvim";
+  home.file.".config/nvim/lua/user" = {
+    source = neovimConfRepo;
+    recursive = true;
+  };
+  home.file.".config/iterm2/colors" = {
+    source = catppuccinIterm2;
+    recursive = true;
+  };
+  programs.htop.enable = true;
+  programs.gh.settings = { enableNotifications = false; };
   programs.git = {
     enable = true;
     aliases = {
       pushall = "!git remote | xargs -L1 git push --all";
       graph = "log --decorate --oneline --graph";
-      add-nowhitespace = "!git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -";
-      recent-branches = "!git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'";
+      add-nowhitespace =
+        "!git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -";
+      recent-branches =
+        "!git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'";
       s = "status";
     };
     userName = "Ian Ker-Seymer";

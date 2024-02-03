@@ -56,7 +56,7 @@
       terminal.integrated.shell.linux = "${pkgs.zsh}/bin/zsh";
 
       editor.fontFamily =
-        "FiraCode, 'FiraCode NFM', 'JetbrainsMono Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'";
+        "'JetBrainsMono Nerd Font Mono', 'FiraCode Nerd Font Mono', 'monospace', monospace, 'Droid Sans Fallback'";
       editor.cursorStyle = "line";
       editor.lineNumbers = "on";
       editor.wordWrap = "off";
@@ -111,25 +111,25 @@
         useCtrlKeys = true;
         hlsearch = true;
         insertModeKeyBindings = [{
-          "before" = [ "j" "k" ];
-          "after" = [ "<Esc>" ];
+          before = [ "j" "k" ];
+          after = [ "<Esc>" ];
         }];
         normalModeKeyBindingsNonRecursive = [
           {
-            "before" = [ "<leader>" "f" "s" ];
-            "commands" = [ "workbench.action.findInFiles" ];
+            before = [ "<leader>" "f" "s" ];
+            commands = [ "workbench.action.findInFiles" ];
           }
           {
-            "before" = [ "<leader>" "f" "f" ];
-            "commands" = [ "workbench.action.quickOpen" ];
+            before = [ "<leader>" "f" "f" ];
+            commands = [ "workbench.action.quickOpen" ];
           }
           {
-            "before" = [ "<leader>" "d" ];
-            "after" = [ "d" "d" ];
+            before = [ "<leader>" "d" ];
+            after = [ "d" "d" ];
           }
           {
-            "before" = [ "<C-n>" ];
-            "commands" = [ ":nohl" ];
+            before = [ "<C-n>" ];
+            commands = [ ":nohl" ];
           }
         ];
       };

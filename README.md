@@ -2,7 +2,7 @@
 
 ## Usage
 
-Enable these experimental features in `nix.conf`:
+Enable these experimental features in `~/.config/nix/nix.conf`:
 
 ```nix
 experimental-features = nix-command flakes auto-allocate-uids
@@ -11,11 +11,13 @@ experimental-features = nix-command flakes auto-allocate-uids
 Then run:
 
 ```bash
-$ nix run --impure home-manager/master -- -b bak switch --flake .#ianks@macbook
+$ ./install.sh
 ```
 
-After you are done, you can roll back with:
+### Building the devcontainer
+
+There's a simple devcontainer in here with sshd installed. To build:
 
 ```bash
-$ nix run --impure home-manager/master -- -b bak switch --flake .#ianks@macbook --rollback
+$ just devcontainer
 ```

@@ -1,8 +1,8 @@
 { config, pkgs, misc, ... }:
 let
-  getVar = varName: pkgs.lib.removeSuffix "\n" (builtins.readFile /tmp/.flake-var-${varName});
-in
-{
+  getVar = varName:
+    pkgs.lib.removeSuffix "\n" (builtins.readFile /tmp/.flake-var-${varName});
+in {
   home.username = getVar "user";
   home.homeDirectory = getVar "home";
   nixpkgs = {
@@ -12,7 +12,8 @@ in
       allowUnfreePredicate = (_: true);
     };
   };
-  home.stateVersion = "22.11"; # https://nixos.org/manual/nixos/unstable/release-notes#sec-release-24.05
+  home.stateVersion =
+    "22.11"; # https://nixos.org/manual/nixos/unstable/release-notes#sec-release-24.05
   home.packages = [
     pkgs.helix
     pkgs.git
@@ -23,7 +24,7 @@ in
     pkgs.fd
     pkgs.vscode
     pkgs.just
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     pkgs.gh
     pkgs.direnv
     pkgs.ripgrep
