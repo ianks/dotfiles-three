@@ -17,11 +17,12 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
-        uses: devcontainers/ci@v0.3
-        with:
-          imageName: ghcr.io/ianks/devcontainer
-          cacheFrom: ghcr.io/ianks/devcontainer
-          push: filter
-          refFilterForPush: refs/heads/main
-          platform: linux/amd64
+      - name: Install just
+        run: sudo snap install --edge --classic just
+
+      - name: Build container
+        run: just devcontainer-build
+
+      - name: Push to ghcr.io
+        if: github.ref == 'refs/heads/main'
+        run: just devcontainer-push
