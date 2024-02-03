@@ -38,10 +38,8 @@ set -eu -o pipefail
 
 echo "Starting SSH..."
 /usr/local/share/ssh-init.sh
-echo "Starting SSH...Done!"
-echo "You can now connect to this container using SSH using the following command:"
-echo "    $ ssh -p 2222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null ${USERNAME}@localhost"
 echo "Any SSH keys you have associated with your GitHub account will be accepted for SSH access."
+echo "Starting SSH...Done!"
 sleep infinity
 
 EOF
