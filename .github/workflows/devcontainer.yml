@@ -1,0 +1,27 @@
+---
+name: 'devcontainer'
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Login to ghcr.io
+        uses: docker/login-action@v3.0.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ghcr.io/ianks/devcontainer
+          cacheFrom: ghcr.io/ianks/devcontainer
+          push: filter
+          refFilterForPush: "refs/heads/main"
+          platform: "linux/amd64,linux/arm64"

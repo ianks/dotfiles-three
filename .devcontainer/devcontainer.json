@@ -1,0 +1,16 @@
+{
+  "name": "ianks/devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Any generic, debian-based image.
+  "remoteUser": "devcontainer",
+  "containerUser": "devcontainer",
+  "containerEnv": {
+    "START_SSHD": "true"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/nix:1.2.0": {
+      "version": "2.20.1",
+      "extraNixConfig": "experimental-features = nix-command flakes auto-allocate-uids"
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {}
+  }
+}
