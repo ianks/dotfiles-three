@@ -16,7 +16,10 @@
 			"username": "devcontainer",
 			"userUid": "1000",
 			"userGid": "1000",
-			"upgradePackages": "true"
+			"upgradePackages": "true",
+			"installZsh": "false",
+      "installOhMyZsh": "false",
+      "installOhMyZshConfig": "false"
 		},
     "ghcr.io/devcontainers/features/nix:1.2.0": {
       "version": "2.20.1",
