@@ -28,4 +28,24 @@ chmod 700 "/home/$USERNAME/.ssh"
 chmod 600 "/home/$USERNAME/.ssh/authorized_keys"
 echo "Enabled access for these keys:"
 cat "/home/$USERNAME/.ssh/authorized_keys"
+
+# Write out a scripts that can be referenced as an ENTRYPOINT to auto-start sshd and fix login environments
+tee /usr/local/share/entrypoint.sh > /dev/null \
+<< 'EOF'
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+
+echo "Starting SSH..."
+/usr/local/share/ssh-init.sh
+echo "Starting SSH...Done!"
+echo "You can now connect to this container using SSH using the following command:"
+echo "    $ ssh -p ${SSHD_PORT} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null ${USERNAME}@localhost"
+echo "Any SSH keys you have associated with your GitHub account will be accepted for SSH access."
+sleep infinity
+
+EOF
+
+chmod +x /usr/local/share/entrypoint.sh
+
 echo "Done!"
