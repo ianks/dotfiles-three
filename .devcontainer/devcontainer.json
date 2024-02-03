@@ -9,7 +9,7 @@
   "features": {
     "ghcr.io/devcontainers/features/nix:1.2.0": {
       "version": "2.20.1",
-      "extraNixConfig": "experimental-features = nix-command flakes auto-allocate-uids"
+      "extraNixConfig": "experimental-features = nix-command flakes auto-allocate-uids,filter-syscalls = false,sandbox = false"
     },
     "ghcr.io/devcontainers/features/sshd:1": {}
   }
