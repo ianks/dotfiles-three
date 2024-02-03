@@ -1,7 +1,11 @@
 ---
 name: 'devcontainer'
+
 on:
   push:
+
+permissions:
+  packages: write
 
 jobs:
   build:
