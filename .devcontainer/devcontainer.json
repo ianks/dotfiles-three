@@ -1,16 +1,36 @@
 {
   "name": "ianks/devcontainer",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Any generic, debian-based image.
   "remoteUser": "devcontainer",
   "containerUser": "devcontainer",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"VARIANT": "bullseye"
+		}
+	},
   "containerEnv": {
     "START_SSHD": "true"
   },
   "features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"username": "devcontainer",
+			"userUid": "1000",
+			"userGid": "1000",
+			"upgradePackages": "true"
+		},
     "ghcr.io/devcontainers/features/nix:1.2.0": {
       "version": "2.20.1",
       "extraNixConfig": "experimental-features = nix-command flakes auto-allocate-uids"
     },
-    "ghcr.io/devcontainers/features/sshd:1": {}
-  }
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    "./local-features/setup-user": {
+      "githubUsername": "ianks"
+    }
+  },
+  "overrideFeatureInstallOrder": [
+      "ghcr.io/devcontainers/features/common-utils:2",
+      "ghcr.io/devcontainers/features/sshd:1",
+      "ghcr.io/devcontainers/features/nix:1.2.0",
+      "./local-features/setup-user"
+  ]
 }

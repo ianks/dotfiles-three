@@ -1,0 +1,16 @@
+{
+  "id": "setup-user",
+  "name": "Setup user configs",
+  "options": {
+    "githubUsername": {
+      "type": "string",
+      "proposals": [],
+      "default": "unknown",
+      "description": "Username for GitHub to allow SSH access"
+    }
+  },
+  "install": {
+    "app": "",
+    "file": "install.sh"
+  }
+}
