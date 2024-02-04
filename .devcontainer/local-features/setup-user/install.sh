@@ -3,12 +3,8 @@
 set -eux -o pipefail
 
 USERNAME=${USERNAME:-"devcontainer"}
-GITHUBUSERNAME=${GITHUBUSERNAME:-"unknown"}
-
-if [ "$GITHUBUSERNAME" = "unknown" ]; then
-    echo -e 'The GITHUB_USERNAME environment variable must be set to the GitHub username of the user you want to enable SSH access for.'
-    exit 1
-fi
+SSHAUTHORIZEDKEYSURL=${SSHAUTHORIZEDKEYSURL:-"none"}
+DOTFILESREPO=${DOTFILESREPO:-"none"}
 
 if [ "$(id -u)" -ne 0 ]; then
     echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
@@ -20,30 +16,42 @@ if ! id -u "$USERNAME" > /dev/null 2>&1; then
     exit 1
 fi
 
-echo "Enabling SSH access for $GITHUBUSERNAME on user $USERNAME..."
-mkdir -p "/home/$USERNAME/.ssh"
-curl -fsSL "https://github.com/$GITHUBUSERNAME.keys" > "/home/$USERNAME/.ssh/authorized_keys"
-chown -R "$USERNAME" "/home/$USERNAME/.ssh"
-chmod 700 "/home/$USERNAME/.ssh"
-chmod 600 "/home/$USERNAME/.ssh/authorized_keys"
-echo "Enabled access for these keys:"
-cat "/home/$USERNAME/.ssh/authorized_keys"
+if [ "$DOTFILESREPO" != "none" ]; then
+  echo "Cloning dotfiles to /home/$USERNAME/.dotfiles"
+  git clone "$DOTFILESREPO" "/home/$USERNAME/.dotfiles"
+fi
 
-# Write out a scripts that can be referenced as an ENTRYPOINT to auto-start sshd and fix login environments
+if [ -f "/home/$USERNAME/.dotfiles/install.sh" ]; then
+  # Remove the default zshenv file from nix, as it will be replaced by the dotfiles install script
+  rm -f "/home/$USERNAME/.zshenv"
+  echo "Running dotfiles install script"
+  sudo -u "$USERNAME" /home/"$USERNAME"/.dotfiles/install.sh
+  echo "Setting default shell to nix zsh"
+  sudo -u "$USERNAME" chsh -s "/home/$USERNAME/.nix-profile/bin/zsh" "$USERNAME"
+fi
+
+if [ "$SSHAUTHORIZEDKEYSURL" != "none" ]; then
+  echo "Enabling SSH access for $USERNAME"
+  mkdir -p "/home/$USERNAME/.ssh"
+  curl -fsSL "$SSHAUTHORIZEDKEYSURL" > "/home/$USERNAME/.ssh/authorized_keys"
+  chown -R "$USERNAME" "/home/$USERNAME/.ssh"
+  chmod 700 "/home/$USERNAME/.ssh"
+  chmod 600 "/home/$USERNAME/.ssh/authorized_keys"
+  echo "Enabled access for these keys:"
+  cat "/home/$USERNAME/.ssh/authorized_keys"
+fi
+
+echo "Creating entrypoint script"
 tee /usr/local/share/entrypoint.sh > /dev/null \
 << 'EOF'
 #!/usr/bin/env bash
 
 set -eu -o pipefail
 
-echo "Starting SSH..."
 /usr/local/share/ssh-init.sh
-echo "Any SSH keys you have associated with your GitHub account will be accepted for SSH access."
-echo "Starting SSH...Done!"
+echo "Started sshd in the background"
 sleep infinity
-
 EOF
-
 chmod +x /usr/local/share/entrypoint.sh
 
 echo "Done!"

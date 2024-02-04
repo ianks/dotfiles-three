@@ -35,6 +35,14 @@ in {
     pkgs.clang
     pkgs.lldb
     pkgs.nixfmt
+    pkgs.makeWrapper
+    pkgs.pkg-config
+    pkgs.gnumake
+    pkgs.gcc
+    pkgs.libiconv
+    pkgs.autoconf
+    pkgs.automake
+    pkgs.libtool
   ];
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;

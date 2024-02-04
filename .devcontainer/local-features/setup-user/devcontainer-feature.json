@@ -5,9 +5,13 @@
     "githubUsername": {
       "type": "string",
       "proposals": [],
-      "default": "unknown",
+      "default": "none",
       "description": "Username for GitHub to allow SSH access"
-    }
+    },
+    "dotfilesRepo": {
+      "type": "string",
+      "proposals": [],
+      "default": "none"
   },
   "install": {
     "app": "",

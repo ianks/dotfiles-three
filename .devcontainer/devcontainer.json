@@ -28,7 +28,8 @@
     },
     "ghcr.io/devcontainers/features/sshd:1": {},
     "./local-features/setup-user": {
-      "githubUsername": "ianks"
+      "sshAuthorizedKeysUrl": "https://github.com/ianks.keys",
+      "dotfilesRepo": "https://github.com/ianks/dotfiles-three.git"
     }
   },
   "overrideFeatureInstallOrder": [
