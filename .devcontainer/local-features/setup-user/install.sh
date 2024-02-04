@@ -18,7 +18,7 @@ fi
 
 if [ "$DOTFILESREPO" != "none" ]; then
   echo "Cloning dotfiles to /home/$USERNAME/.dotfiles"
-  git clone "$DOTFILESREPO" "/home/$USERNAME/.dotfiles"
+  sudo -u "$USERNAME" git clone "$DOTFILESREPO" "/home/$USERNAME/.dotfiles"
 fi
 
 if [ -f "/home/$USERNAME/.dotfiles/install.sh" ]; then
