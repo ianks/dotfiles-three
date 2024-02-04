@@ -27,7 +27,7 @@ if [ -f "/home/$USERNAME/.dotfiles/install.sh" ]; then
   echo "Running dotfiles install script"
   sudo -u "$USERNAME" env PATH="/home/$USERNAME/.nix-profile/bin:$PATH" "/home/$USERNAME/.dotfiles/install.sh"
   echo "Setting default shell to nix zsh"
-  sudo -u "$USERNAME" chsh -s "/home/$USERNAME/.nix-profile/bin/zsh" "$USERNAME"
+  chsh -s "/home/$USERNAME/.nix-profile/bin/zsh" "$USERNAME"
 fi
 
 if [ "$SSHAUTHORIZEDKEYSURL" != "none" ]; then
