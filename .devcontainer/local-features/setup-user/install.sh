@@ -25,7 +25,7 @@ if [ -f "/home/$USERNAME/.dotfiles/install.sh" ]; then
   # Remove the default zshenv file from nix, as it will be replaced by the dotfiles install script
   rm -f "/home/$USERNAME/.zshenv"
   echo "Running dotfiles install script"
-  sudo -u "$USERNAME" /home/"$USERNAME"/.dotfiles/install.sh
+  sudo -u "$USERNAME" /bin/bash /home/"$USERNAME"/.dotfiles/install.sh
   echo "Setting default shell to nix zsh"
   sudo -u "$USERNAME" chsh -s "/home/$USERNAME/.nix-profile/bin/zsh" "$USERNAME"
 fi
