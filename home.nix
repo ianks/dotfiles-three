@@ -38,7 +38,6 @@ in {
     pkgs.makeWrapper
     pkgs.pkg-config
     pkgs.gnumake
-    pkgs.gcc
     pkgs.libiconv
     pkgs.autoconf
     pkgs.automake
