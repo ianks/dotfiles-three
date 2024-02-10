@@ -15,10 +15,8 @@ in {
   home.stateVersion =
     "22.11"; # https://nixos.org/manual/nixos/unstable/release-notes#sec-release-24.05
   home.packages = [
-    pkgs.helix
     pkgs.git
     pkgs.htop
-    pkgs.github-cli
     pkgs.fzf
     pkgs.ripgrep
     pkgs.fd
@@ -30,7 +28,7 @@ in {
     pkgs.ripgrep
     pkgs.bat
     pkgs.rustup
-    pkgs.ruby
+    pkgs.ruby_3_3
     pkgs.llvm
     pkgs.clang
     pkgs.lldb
@@ -42,6 +40,8 @@ in {
     pkgs.autoconf
     pkgs.automake
     pkgs.libtool
+    pkgs.starship
+    pkgs.unzip
   ];
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;

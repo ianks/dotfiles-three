@@ -25,6 +25,7 @@
             ./aliases.nix
             ./programs.nix
             ./vscode.nix
+            ./rust.nix
           ];
         };
       };

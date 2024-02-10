@@ -7,5 +7,9 @@
     "df" = "df -h";
     "gch" = ''git checkout "$(git recent-branches | fzf | tr -d '[:space:]')"'';
     "gc" = "git commit";
+    "fdbg" = "lldb -p $(ps aux | fzf | awk '{print $2}')";
+    "fkill" = "kill $(ps aux | fzf | awk '{print $2}')";
+    "nix-install" = "nix-env -iA nixpkgs";
+    "nix-shell-with" = "nix-shell -p";
   };
 }

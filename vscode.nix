@@ -52,26 +52,36 @@
     ];
 
     userSettings = {
-      update.mode = "none";
-      terminal.integrated.shell.linux = "${pkgs.zsh}/bin/zsh";
-
-      editor.fontFamily =
-        "'JetBrainsMono Nerd Font Mono', 'FiraCode Nerd Font Mono', 'monospace', monospace, 'Droid Sans Fallback'";
-      editor.cursorStyle = "line";
-      editor.lineNumbers = "on";
-      editor.wordWrap = "off";
-      editor.fontLigatures = true;
-      editor.inlineSuggest.enabled = true;
-      editor.tabSize = 2;
-      editor.insertSpaces = true;
-
-      # make it faster
-      editor.minimap.enabled = false;
-      search.searchOnType = false;
       breadcrumbs.enabled = true;
-      editor.wordSeparators = ''/\()"':;.;<>~!@#$%^&*|+=[]{}`?-'';
-      terminal.integrated.tabs.enabled = true;
+      diffEditor.ignoreTrimWhitespace = false;
+      editor.cursorStyle = "line";
+      editor.fontFamily =
+        "'JetBrainsMono Nerd Font Mono', 'FiraCode Nerd Font Mono', monospace";
+      editor.fontLigatures = true;
       editor.inlayHints.enabled = "off";
+      editor.inlineSuggest.enabled = true;
+      editor.insertSpaces = true;
+      editor.lineNumbers = "on";
+      editor.minimap.enabled = false;
+      editor.tabSize = 2;
+      editor.wordSeparators = ''/\()"':;.;<>~!@#$%^&*|+=[]{}`?-'';
+      editor.wordWrap = "off";
+      explorer.confirmDragAndDrop = false;
+      files.trimTrailingWhitespace = true;
+      files.insertFinalNewline = true;
+      git.openDiffOnClick = false;
+      hexeditor.columnWidth = 16;
+      hexeditor.defaultEndianness = "little";
+      hexeditor.inspectorType = "aside";
+      hexeditor.showDecodedText = true;
+      rust-analyzer.check.command = "clippy";
+      scm.showActionButton = false;
+      search.searchOnType = false;
+      terminal.integrated.shell.linux = "${pkgs.zsh}/bin/zsh";
+      terminal.integrated.shell.osx = "${pkgs.zsh}/bin/zsh";
+      terminal.integrated.tabs.enabled = true;
+      update.mode = "none";
+      window.zoomLevel = 1;
 
       workbench = {
         colorTheme = "Catppuccin Mocha";
@@ -134,12 +144,6 @@
         ];
       };
 
-      # nixfmt.path = "${pkgs.nixfmt}/bin/nixfmt";
-      # rust-client.rustupPath = "${pkgs.rustup}/bin/rustup";
-
-      rust-analyzer.check.command = "clippy";
-      diffEditor.ignoreTrimWhitespace = false;
-      files.trimTrailingWhitespace = true;
       files.exclude = {
         "**/.git" = true;
         "**/.svn" = true;

@@ -5,4 +5,10 @@
   '';
   programs.zsh.enableCompletion = true;
   programs.zsh.enable = true;
+
+  programs.zsh.envExtra = ''
+    if [ -f "$HOME/.env" ]; then
+      source "$HOME/.env"
+    fi
+  '';
 }
