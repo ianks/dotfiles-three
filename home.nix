@@ -27,16 +27,15 @@ in {
     pkgs.direnv
     pkgs.ripgrep
     pkgs.bat
-    pkgs.rustup
-    pkgs.ruby_3_3
     pkgs.llvm
     pkgs.clang
+    pkgs.libiconv
+    pkgs.ruby_3_3
     pkgs.lldb
     pkgs.nixfmt
     pkgs.makeWrapper
     pkgs.pkg-config
     pkgs.gnumake
-    pkgs.libiconv
     pkgs.autoconf
     pkgs.automake
     pkgs.libtool

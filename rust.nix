@@ -1,14 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    bacon
-    cargo-expand
-    cargo-nextest
-    cargo-outdated
-    cargo-watch
-    rustup
-  ];
+  home.packages = with pkgs; [ cargo-expand cargo-outdated rustup ];
 
   home.file = {
     ".cargo/config.toml".text = ''
