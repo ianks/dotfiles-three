@@ -16,7 +16,13 @@
       homeConfigurations = {
         "dev" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${getVar "system"};
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs;
+
+            myPkgs = import ./pkgs/default.nix {
+              pkgs = nixpkgs.legacyPackages.${getVar "system"};
+            };
+          };
           modules = [
             ./home.nix
             ./path.nix

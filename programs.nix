@@ -7,7 +7,7 @@ let
   };
   astroNvimConf = builtins.fetchGit {
     url = "https://github.com/AstroNvim/AstroNvim";
-    ref = "refs/tags/v3.43.3";
+    ref = "refs/tags/v3.43.4";
   };
   neovimConfRepo = builtins.fetchGit {
     url = "https://github.com/ianks/astronvim_config.git";
@@ -27,16 +27,6 @@ in {
   };
   programs.jq = { enable = true; };
   programs.zoxide = { enable = true; };
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    enableAutosuggestions = true;
-    syntaxHighlighting.enable = true;
-    defaultKeymap = "viins";
-    initExtra = ''
-      bindkey -M viins 'jk' vi-cmd-mode
-    '';
-  };
   programs.direnv.enable = true;
   programs.dircolors.enable = true;
   programs.fzf.enable = true;
@@ -114,7 +104,7 @@ in {
       user.signingkey = "~/.ssh/id_ed25519.pub";
     };
     lfs.enable = true;
-    ignores = [ ".direnv" "result" ];
+    ignores = [ ".direnv" "result" "tmp" ];
     delta = { enable = true; };
   };
 }
