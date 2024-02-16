@@ -25,8 +25,8 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     make install PREFIX=$out
     wrapProgram $out/bin/ruby-build \
-      --set RUBY_CONFIGURE_OPTS "--disable-install-doc --enable-install-static-library --enable-shared" \
-      --set RUBY_CFLAGS "-Og" \
+      --set-default RUBY_CONFIGURE_OPTS "--disable-install-doc --enable-install-static-library --enable-shared" \
+      --set-default optflags "-Og -ggdb" \
       --add-flags "--keep" \
       --add-flags "--verbose"
   '';
