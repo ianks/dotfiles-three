@@ -14,6 +14,7 @@
         catppuccin.catppuccin-vsc-icons
         # vadimcn.vscode-lldb
         mkhl.direnv
+        esbenp.prettier-vscode
         github.copilot-chat
         github.vscode-pull-request-github
         eamodio.gitlens
@@ -106,6 +107,14 @@
       };
       "[nix]" = {
         editor.defaultFormatter = "brettm12345.nixfmt-vscode";
+        editor.formatOnSave = true;
+      };
+      "[javascript]" = {
+        editor.defaultFormatter = "esbenp.prettier-vscode";
+        editor.formatOnSave = true;
+      };
+      "[typescript]" = {
+        editor.defaultFormatter = "esbenp.prettier-vscode";
         editor.formatOnSave = true;
       };
 
