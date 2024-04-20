@@ -5,6 +5,11 @@ let
 in {
   home.username = getVar "user";
   home.homeDirectory = getVar "home";
+  home.sessionVariables = {
+    VISUAL = "nvim";
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+  };
   nixpkgs = {
     config = {
       allowUnfree = true;
