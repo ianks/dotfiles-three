@@ -22,6 +22,8 @@
         source "$HOME/.env"
       fi
 
+      export VISUAL=nvim
+
       export RUBY_BUILD_BUILD_PATH="$HOME/.rubies/build"
       source ${myPkgs.chruby}/share/chruby/chruby.sh
     '';
