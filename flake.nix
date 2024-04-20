@@ -31,6 +31,7 @@
             ./aliases.nix
             ./programs.nix
             ./vscode.nix
+            ./vscode-extensions.nix
             ./rust.nix
           ];
         };

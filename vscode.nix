@@ -4,261 +4,6 @@
   programs.vscode = {
     enable = true;
 
-    extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "nix-env-selector";
-        publisher = "arrterian";
-        version = "1.0.11";
-        sha256 = "113zx78c3219knw4qa04242404n32vnk9rb6a3ynz41dgwh1mbbl";
-      }
-      {
-        name = "Nix";
-        publisher = "bbenoist";
-        version = "1.0.1";
-        sha256 = "0zd0n9f5z1f0ckzfjr38xw2zzmcxg1gjrava7yahg5cvdcw6l35b";
-      }
-      {
-        name = "vscode-tailwindcss";
-        publisher = "bradlc";
-        version = "0.11.64";
-        sha256 = "11rp6zni6152djiyn9flh4gwx7drjhq41zws4hz470jjg953jk19";
-      }
-      {
-        name = "nixfmt-vscode";
-        publisher = "brettm12345";
-        version = "0.0.1";
-        sha256 = "07w35c69vk1l6vipnq3qfack36qcszqxn8j3v332bl0w6m02aa7k";
-      }
-      {
-        name = "catppuccin-vsc";
-        publisher = "Catppuccin";
-        version = "3.13.0";
-        sha256 = "13rxjgbgfhcr7b1ki94gxn7s2dv9kr740cnhnfq3vshm5n211ayg";
-      }
-      {
-        name = "catppuccin-vsc-icons";
-        publisher = "Catppuccin";
-        version = "1.11.0";
-        sha256 = "0vlcrxnjgigxysg0jigfqnpvgll689pffcjhlrpj7cz3g9qadc0r";
-      }
-      {
-        name = "path-intellisense";
-        publisher = "christian-kohler";
-        version = "2.8.5";
-        sha256 = "1ndffv1m4ayiija1l42m28si44vx9y6x47zpxzqv2j4jj7ga1n5z";
-      }
-      {
-        name = "vscode-eslint";
-        publisher = "dbaeumer";
-        version = "3.0.5";
-        sha256 = "1cmkgi1i5c7qkrr8cif36i803yl6mrv87y9gmzfb701pcfg8yxx9";
-      }
-      {
-        name = "gitlens";
-        publisher = "eamodio";
-        version = "2024.4.1905";
-        sha256 = "1y66qdvi3qfd0g41lijwf2fm6brw2y42yc3nf1n02wpafkinj327";
-      }
-      {
-        name = "vsc-community-material-theme";
-        publisher = "Equinusocio";
-        version = "1.4.7";
-        sha256 = "025bd6h43zx7sy2fqld2kvc3y2c30vmcjvmdcsy3s1zaj1f0x2i0";
-      }
-      {
-        name = "prettier-vscode";
-        publisher = "esbenp";
-        version = "10.4.0";
-        sha256 = "1iy7i0yxnhizz40llnc1dk9q8kk98rz6ki830sq7zj3ak9qp9vzk";
-      }
-      {
-        name = "codespaces";
-        publisher = "GitHub";
-        version = "1.16.19";
-        sha256 = "12g739q474ann7djp79iqm1zfa0mdam0ki0kf8xfhd9i0f3ic1i2";
-      }
-      {
-        name = "copilot";
-        publisher = "GitHub";
-        version = "1.180.827";
-        sha256 = "0b3jc5h9gimyqfq87axhdwdskajqy54b9gmc04i144v8s5mnf38w";
-      }
-      {
-        name = "copilot-chat";
-        publisher = "GitHub";
-        version = "0.15.2024041901";
-        sha256 = "138ffw745dilsrhsqqljfqqx5v2z6h0v5qngaka5dddljvnv59vf";
-      }
-      {
-        name = "vscode-pull-request-github";
-        publisher = "GitHub";
-        version = "0.87.2024041804";
-        sha256 = "1pm183vsyqg0gjxcnh5m8mcknx7s357z8hzlzha64i18xsp94yia";
-      }
-      {
-        name = "vscode-graphql-syntax";
-        publisher = "GraphQL";
-        version = "1.3.5";
-        sha256 = "1gvyzqd3ng11854mdw7b5az4km35cgl4dimi81x65ppfcv2f41ds";
-      }
-      {
-        name = "byesig";
-        publisher = "itarato";
-        version = "0.0.15";
-        sha256 = "13cy8si22kjmr1yc125dqd1jyjsql5ms4qyfnkph1f8ijd7gpivr";
-      }
-      {
-        name = "nix-ide";
-        publisher = "jnoortheen";
-        version = "0.3.1";
-        sha256 = "1cpfckh6zg8byi6x1llkdls24w9b0fvxx4qybi9zfcy5gc60r6nk";
-      }
-      {
-        name = "vscode-rdbg";
-        publisher = "KoichiSasada";
-        version = "0.2.2";
-        sha256 = "1dzbngaqw5fahhf0nyjljrk9k8ddn4iklclihwrc1a0yq9l339ca";
-      }
-      {
-        name = "marp-vscode";
-        publisher = "marp-team";
-        version = "2.8.0";
-        sha256 = "1rzmiz0026g0wkb3sq7mr60il0m9gsm8k9alhdbv8zwf0k9x3yf7";
-      }
-      {
-        name = "direnv";
-        publisher = "mkhl";
-        version = "0.17.0";
-        sha256 = "1n2qdd1rspy6ar03yw7g7zy3yjg9j1xb5xa4v2q12b0y6dymrhgn";
-      }
-      {
-        name = "vscode-docker";
-        publisher = "ms-azuretools";
-        version = "1.29.0";
-        sha256 = "0rz32qwdf7a5hn3nnhxviaf8spwsszfrxmhnbbskspi5r9b6qm4r";
-      }
-      {
-        name = "remote-containers";
-        publisher = "ms-vscode-remote";
-        version = "0.361.0";
-        sha256 = "12rim5w0wla15afks881lxy358ams5ql6pha340c16w14pvygizc";
-      }
-      {
-        name = "remote-ssh";
-        publisher = "ms-vscode-remote";
-        version = "0.112.2024040915";
-        sha256 = "06cz4q82aw0nzlqc06dnkn7nx2hc66plw1pqbfsn42l42g35d1fz";
-      }
-      {
-        name = "remote-ssh-edit";
-        publisher = "ms-vscode-remote";
-        version = "0.86.0";
-        sha256 = "0cmh2d73y1kmp6a92h3z7gams7lnqvb7rgib52kqslm4hyhdmii6";
-      }
-      {
-        name = "hexeditor";
-        publisher = "ms-vscode";
-        version = "1.9.14";
-        sha256 = "0fncakv8v8p1rhka5dvh87kc0vsfaxg1s48blwhv7r6fyw70b9jm";
-      }
-      {
-        name = "makefile-tools";
-        publisher = "ms-vscode";
-        version = "0.10.5";
-        sha256 = "16sgj68al3m4dsmccqpl08xxp6ds8f2wmjxiajqp2v9izpb9l01p";
-      }
-      {
-        name = "remote-explorer";
-        publisher = "ms-vscode";
-        version = "0.5.2024031109";
-        sha256 = "1r8wdlz7p0k4kzfcmqiizns043lhghf5v34sf0gays02x8x9xh5p";
-      }
-      {
-        name = "nix-extension-pack";
-        publisher = "pinage404";
-        version = "3.0.0";
-        sha256 = "1ndhz51p1fxf42ch1awf7cydi5jryff5v72zckl1mi3j17ldsrbi";
-      }
-      {
-        name = "vscode-yaml";
-        publisher = "redhat";
-        version = "1.14.0";
-        sha256 = "0pww9qndd2vsizsibjsvscz9fbfx8srrj67x4vhmwr581q674944";
-      }
-      {
-        name = "rust-analyzer";
-        publisher = "rust-lang";
-        version = "0.4.1929";
-        sha256 = "08dyqn35mm4z8ma8nhhgqp604nyn11zwvb68yfx54pp28nga3w5n";
-      }
-      {
-        name = "ruby-extensions-pack";
-        publisher = "Shopify";
-        version = "0.1.8";
-        sha256 = "03sq20z552qqmshkx7bxa9v9z960mjqhkqawxvhmw7prxxvlp9np";
-      }
-      {
-        name = "ruby-lsp";
-        publisher = "Shopify";
-        version = "0.6.10";
-        sha256 = "1cgqzdhsi1ffdsaz303gnj1ild0ak3jx5yw0947h0784wpqab2d3";
-      }
-      {
-        name = "theme-check-vscode";
-        publisher = "Shopify";
-        version = "2.3.0";
-        sha256 = "0x8rnd4pxa17iv3hz1367dmag1chgc6baicyhib067hsf8szccj8";
-      }
-      {
-        name = "just";
-        publisher = "skellock";
-        version = "2.0.0";
-        sha256 = "1ph869zl757a11f8iq643f79h8gry7650a9i03mlxyxlqmspzshl";
-      }
-      {
-        name = "sorbet-vscode-extension";
-        publisher = "sorbet";
-        version = "0.3.33";
-        sha256 = "0qbxx0pqdzs3q1ii852b9p5dm27fdd7qdz9gsbl2f5ipkiy6q4a4";
-      }
-      {
-        name = "vscode-tailscale";
-        publisher = "Tailscale";
-        version = "1.0.0";
-        sha256 = "0j41xbz6zangq7i4mj4xgdpsswss3jnznyd9v3943yvfhmkq5a1h";
-      }
-      {
-        name = "even-better-toml";
-        publisher = "tamasfe";
-        version = "0.19.2";
-        sha256 = "0q9z98i446cc8bw1h1mvrddn3dnpnm2gwmzwv2s3fxdni2ggma14";
-      }
-      {
-        name = "shellcheck";
-        publisher = "timonwong";
-        version = "0.37.1";
-        sha256 = "0jvi9pzw80ga47p9zy92wy43prci5dj8lfa5syxl5cvchd3848v1";
-      }
-      {
-        name = "vscode-lldb";
-        publisher = "vadimcn";
-        version = "1.10.0";
-        sha256 = "0s7lwvq7fmd2hms6qlbvq0g17gaf896kqkphdazp3l5h8knay0j4";
-      }
-      {
-        name = "vim";
-        publisher = "vscodevim";
-        version = "1.27.2";
-        sha256 = "0m5gdyvd3yg52d8zxwdw188wqjfvdyyvwnw5dz57pn633g5bi49v";
-      }
-      {
-        name = "vscode-alternate-file";
-        publisher = "will-wow";
-        version = "0.3.1";
-        sha256 = "1mz1m5gfhyqa66wza6xb4hmkwhgi48npwj34w2n2nalvf6k53w85";
-      }
-    ];
-
     keybindings = [
       {
         key = "cmd+t";
@@ -316,10 +61,8 @@
       update.mode = "none";
       window.zoomLevel = 1;
 
-      workbench = {
-        colorTheme = "Catppuccin Mocha";
-        iconTheme = "catppuccin-frappe";
-      };
+      workbench.colorTheme = "Catppuccin Mocha";
+      workbench.iconTheme = "catppuccin-frappe";
 
       "[json]" = {
         editor.defaultFormatter = "vscode.json-language-features";
@@ -350,42 +93,40 @@
         editor.formatOnSave = true;
       };
 
-      vim = {
-        leader = "<space>";
-        handleKeys = {
-          "<C-a>" = false;
-          "<C-f>" = false;
-        };
-        easymotion = false;
-        incsearch = true;
-        useSystemClipboard = true;
-        useCtrlKeys = true;
-        hlsearch = true;
-        insertModeKeyBindings = [{
-          before = [ "j" "k" ];
-          after = [ "<Esc>" ];
-        }];
-        normalModeKeyBindingsNonRecursive = [
-          {
-            before = [ "<leader>" "f" "s" ];
-            commands = [ "workbench.action.findInFiles" ];
-          }
-          {
-            before = [ "<leader>" "f" "f" ];
-            commands = [ "workbench.action.quickOpen" ];
-          }
-          {
-            before = [ "<leader>" "d" ];
-            after = [ "d" "d" ];
-          }
-          {
-            before = [ "<C-n>" ];
-            commands = [ ":nohl" ];
-          }
-        ];
+      vim.leader = "<space>";
+      vim.handleKeys = {
+        "<C-a>" = false;
+        "<C-f>" = false;
       };
+      vim.easymotion = false;
+      vim.incsearch = true;
+      vim.useSystemClipboard = true;
+      vim.useCtrlKeys = true;
+      vim.hlsearch = true;
+      vim.insertModeKeyBindings = [{
+        before = [ "j" "k" ];
+        after = [ "<Esc>" ];
+      }];
+      vim.normalModeKeyBindingsNonRecursive = [
+        {
+          before = [ "<leader>" "f" "s" ];
+          commands = [ "workbench.action.findInFiles" ];
+        }
+        {
+          before = [ "<leader>" "f" "f" ];
+          commands = [ "workbench.action.quickOpen" ];
+        }
+        {
+          before = [ "<leader>" "d" ];
+          after = [ "d" "d" ];
+        }
+        {
+          before = [ "<C-n>" ];
+          commands = [ ":nohl" ];
+        }
+      ];
 
-      files.exclude = {
+      vim.files.exclude = {
         "**/.git" = true;
         "**/.svn" = true;
         "**/.hg" = true;

@@ -49,7 +49,7 @@ if [ -f "$HOME/Library/Application Support/Code/User/keybindings.json" ]; then
 fi
 
 echo "Switching to the flake..."
-nix run --impure home-manager/master -- switch "${args[@]}" --flake .#dev
+nix run --impure home-manager/master -- switch "${args[@]}" --show-trace --flake .#dev
 
 rm -f /tmp/.flake-var-home
 rm -f /tmp/.flake-var-user

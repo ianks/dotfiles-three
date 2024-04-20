@@ -14,6 +14,14 @@ Then run:
 $ ./install.sh
 ```
 
+### Updating VSCode Extensions
+
+VSCode extensions can be added in the UI, but to update the `vscode-extensions.nix` file, run:
+
+```bash
+./script/vscode-extgen | tee vscode-extensions.nix
+```
+
 ### Building the devcontainer
 
 There's a simple devcontainer in here with sshd installed. To build:
