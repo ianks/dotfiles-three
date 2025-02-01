@@ -5,14 +5,10 @@ let
     ref = "main";
     rev = "c51f1815f49e43a26b335dcc70ddd667a87671a6";
   };
-  astroNvimConf = builtins.fetchGit {
-    url = "https://github.com/AstroNvim/AstroNvim";
-    ref = "refs/tags/v3.43.4";
-  };
   neovimConfRepo = builtins.fetchGit {
-    url = "https://github.com/ianks/astronvim_config.git";
+    url = "https://github.com/ianks/nvim-config";
     ref = "main";
-    rev = "d3d084c94dca581cb9986121631b10686441c80f";
+    rev = "ae9ec45c44923135bb7d1802f8fc858ad89efc7d";
   };
 in {
   programs.starship = {
@@ -39,10 +35,6 @@ in {
     vimAlias = true;
   };
   home.file.".config/nvim" = {
-    source = astroNvimConf;
-    recursive = true;
-  };
-  home.file.".config/nvim/lua/user" = {
     source = neovimConfRepo;
     recursive = true;
   };

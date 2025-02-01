@@ -32,7 +32,7 @@ in {
     direnv
     ripgrep
     bat
-    nixfmt-classic
+    nixfmt-rfc-style
     starship
     unzip
     myPkgs.chruby
