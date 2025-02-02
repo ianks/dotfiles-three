@@ -296,7 +296,7 @@
       {
         name = "Continue";
         publisher = "continue";
-        version = "0.9.259";
+        version = "0.8.66";
         sha256 = "1jhkdpj4b6849hclvrhlzcxn44aa9dp2xb6mk4l7dvrxkxyqzhq6";
       }
     ];
