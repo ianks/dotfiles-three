@@ -48,8 +48,30 @@ class VSCodeExtensionFetcher
   end
 
   def extension_list
-    STDERR.puts "Processing extension list"
-    @extensions.map { |ext| fetch_extension_data(ext) }.compact.join("\n")
+    queue = Queue.new
+
+    @extensions.each do |ext|
+      queue << ext
+    end
+
+    results = []
+
+    # Spawn 8 threads to process extensions from the queue
+    threads = 8.times.map do
+      Thread.new do
+        loop do
+          ext = queue.pop(true)
+          break if ext.nil?
+          result = fetch_extension_data(ext)
+          results << result
+        rescue ThreadError => e
+          break
+        end
+      end
+    end.each(&:join)
+
+    # Collect and compact the results to remove any nil values (if needed)
+    results.compact.join("\n")
   end
 
   def fetch_extension_data(extension)

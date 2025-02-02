@@ -53,6 +53,7 @@
       hexeditor.inspectorType = "aside";
       hexeditor.showDecodedText = true;
       rust-analyzer.check.command = "clippy";
+      rust-analyzer.server.path = "rust-analyzer";
       scm.showActionButton = false;
       search.searchOnType = false;
       terminal.integrated.shell.linux = "${pkgs.zsh}/bin/zsh";

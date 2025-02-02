@@ -1,3 +1,5 @@
+- name: remote-ssh
+  publisher: ms-vscode-remote
 - name: nix-env-selector
   publisher: arrterian
 - name: nix
