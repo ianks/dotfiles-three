@@ -6,9 +6,12 @@ require 'open-uri'
 require 'fileutils'
 require 'tmpdir'
 require 'pathname'
+require 'net/http'
+require 'uri'
 
 class VSCodeExtensionFetcher
   VSIX_URL_TEMPLATE = "https://%s.gallery.vsassets.io/_apis/public/gallery/publisher/%s/extension/%s/latest/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
+  MARKETPLACE_API_URL = "https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery"
 
   def initialize(yaml_file)
     STDERR.puts "Initializing VSCodeExtensionFetcher with YAML file: #{yaml_file}"
@@ -79,12 +82,18 @@ class VSCodeExtensionFetcher
     name = extension['name']
     STDERR.puts "Processing extension: #{publisher}.#{name}"
 
+    # First, check if the latest version is a prerelease
+    version_info = get_version_info(publisher, name)
+    if version_info['isPreRelease']
+      STDERR.puts "Skipping prerelease extension: #{publisher}.#{name}"
+      return nil
+    end
+
     download_path = File.join(@temp_dir, "#{publisher}.#{name}.zip")
     STDERR.puts "Downloading to: #{download_path}"
     download_extension(publisher, name, download_path)
 
-    STDERR.puts "Extracting version information"
-    version = extract_version(download_path)
+    version = version_info['version']
     STDERR.puts "Found version: #{version}"
 
     STDERR.puts "Calculating SHA256"
@@ -98,6 +107,39 @@ class VSCodeExtensionFetcher
     nil
   end
 
+  def get_version_info(publisher, name)
+    uri = URI(MARKETPLACE_API_URL)
+    request_body = {
+      flags: 870,
+      filters: [{
+        criteria: [
+          { filterType: 7, value: "#{publisher}.#{name}" }
+        ],
+        pageSize: 1,
+        pageNumber: 1
+      }]
+    }
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    request = Net::HTTP::Post.new(uri)
+    request['Content-Type'] = 'application/json'
+    request['Accept'] = 'application/json;api-version=3.0-preview.1'
+    request.body = request_body.to_json
+
+    response = http.request(request)
+    raise "Failed to get version info: #{response.code}" unless response.is_a?(Net::HTTPSuccess)
+
+    data = JSON.parse(response.body)
+    extension = data['results']&.first&.dig('extensions')&.first
+    raise "Extension not found" unless extension
+
+    {
+      'version' => extension['versions']&.first&.dig('version'),
+      'isPreRelease' => extension['versions']&.first&.dig('flags')&.include?('Preview')
+    }
+  end
+
   def download_extension(publisher, name, path)
     url = VSIX_URL_TEMPLATE % [publisher, publisher, name]
     STDERR.puts "Downloading from URL: #{url}"
@@ -109,15 +151,9 @@ class VSCodeExtensionFetcher
     STDERR.puts "Download completed"
   end
 
-  def extract_version(zip_path)
-    STDERR.puts "Extracting package.json from zip"
-    package_json = `unzip -qc #{zip_path} "extension/package.json"`
-    JSON.parse(package_json)['version']
-  end
-
   def calculate_sha256(file_path)
     STDERR.puts "Running nix-hash"
-     real_path = Pathname.new(file_path).realpath.to_s
+    real_path = Pathname.new(file_path).realpath.to_s
     `nix-hash --flat --base32 --type sha256 #{real_path}`.strip
   end
 
