@@ -4,12 +4,12 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "ruby-build";
-  version = "20241213";
+  version = "20250215";
 
   src = fetchurl {
     url =
       "https://github.com/rbenv/ruby-build/archive/refs/tags/v${version}.tar.gz";
-    sha256 = "029128f1e6f7955354064fa5338d3afc7a33dab529986792f219c2d5266ab261";
+    sha256 = "48a70b18e2e2545e4e68e7c7ea0501e748692b8a60e61cc1dc4354dc4b7cfcb0";
   };
 
   buildInputs = [ makeWrapper ];
