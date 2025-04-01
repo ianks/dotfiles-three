@@ -22,6 +22,10 @@
         source "$HOME/.env"
       fi
 
+      if [ -f "$HOME/.secrets" ]; then
+        source "$HOME/.secrets"
+      fi
+
       export VISUAL=nvim
 
       export RUBY_BUILD_BUILD_PATH="$HOME/.rubies/build"

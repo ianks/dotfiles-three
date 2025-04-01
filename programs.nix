@@ -8,7 +8,7 @@ let
   neovimConfRepo = builtins.fetchGit {
     url = "https://github.com/ianks/nvim-config";
     ref = "main";
-    rev = "ae9ec45c44923135bb7d1802f8fc858ad89efc7d";
+    rev = "ace4793c480c0be9f522c6341e33ae7231f3e2e0";
   };
 in {
   programs.starship = {
